@@ -61,6 +61,7 @@ namespace InvestmentAppProd.Controllers
                     return BadRequest("Investment Start Date cannot be in the future.");
 
                 investment.CalculateValue();
+                _context.ChangeTracker.Clear();
                 _context.Investments.Add(investment);
                 _context.SaveChanges();
 
@@ -110,6 +111,7 @@ namespace InvestmentAppProd.Controllers
                 {
                     return NotFound();
                 }
+                _context.ChangeTracker.Clear();
                 _context.Investments.Remove(investment);
                 _context.SaveChanges();
 
